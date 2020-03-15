@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+  <table class="table table-dark">
+    <thead>
+    <tr>
+      <th scope="col">{% trans %}Nom{% endtrans %}</th>
+      <th scope="col">{% trans %}Quantité commandée{% endtrans %}</th>
+      <th scope="col">{% trans %}Montant {% endtrans %}</th>
+      <th scope="col">{% trans %}Date d'ajout{% endtrans %}</th>
+      <th scope="col">{% trans %}Suppression{% endtrans %}</th>
+    </tr>
+    </thead>
+
+      <tbody>
+
+      {% for panier in paniers %}
+      <tr>
+        <td>{{ panier.produit.nom }}</td>
+        <td>{{ panier|length }}</td>
+        <td>{{ panier|length * panier.produit.prix}} €</td>
+        <td>{{ panier.dateAjout| date('Y-m-d')}}</td>
+        <td><a href="{{path("removePanier",{id: panier.id})}}"><button class="btn btn-danger">{% trans %}Supprimer{% endtrans %}</button></a></td>
+
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>({{ paniers|length }} {% trans %}produits{% endtrans %}) </td>
+        <td></td>
+        <td>{{ panierTotal }} €</td>
+      </tr>
+      </tbody>
+  </table>
+
+{% endblock %}

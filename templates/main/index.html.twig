@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+{{ form_start(addProduit) }}
+ {{ form_end(addProduit) }}
+
+  <table class="table table-dark">
+    <thead>
+    <tr>
+      <th scope="col">{% trans %}Nom{% endtrans %}</th>
+      <th scope="col">{% trans %}Photo{% endtrans %}</th>
+      <th scope="col">{% trans %}Quantité{% endtrans %}</th>
+      <th scope="col">{% trans %}Prix{% endtrans %}</th>
+    </tr>
+    </thead>
+    {% for produit in produits %}
+
+    <tbody>
+    <tr>
+      <th scope="row"><a href="{{path("ficheProduit", {id: produit.id})}}">{{ produit.nom }}</a></th>
+      <td><img src="{{ asset('/uploads/upload_files/' ~ produit.photo)}}" ></td>
+      <td>{{ produit.quantite }}</td>
+      <td>{{ produit.prix }} €</td>
+
+    </tr>
+    </tbody>
+
+    {% endfor %}
+
+  </table>
+
+{% endblock %}
