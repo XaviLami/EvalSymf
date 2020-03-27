@@ -53,7 +53,7 @@ class MainController extends AbstractController
 
   public function ficheProduit($id,EntityManagerInterface $entityManager, Request $request)
   {
-    $singleProduit = $this->getDoctqrine()->getRepository(Produits::class)->find($id);
+    $singleProduit = $this->getDoctrine()->getRepository(Produits::class)->find($id);
 
     $paniers= new Panier();
 
