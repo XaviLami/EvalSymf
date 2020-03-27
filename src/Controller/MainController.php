@@ -98,7 +98,7 @@ class MainController extends AbstractController
     return $this->redirectToRoute('produits');
   }
   /**
-   * @Route("/useless", name="panier")
+   * @Route("/", name="panier")
    */
   public function acceuil()
   {
